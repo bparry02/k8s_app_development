@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+
+  collections:
+    - bparry02.k8s_app_development
+
+  tasks:
+    - name: "Include deploy_key_secret"
+      include_role:
+        name: deploy_key_secret
