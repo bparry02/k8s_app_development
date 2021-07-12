@@ -1,2 +1,5 @@
 ---
-# tasks file for deploy_key_secret
+- name: placeholder task
+  debug:
+    msg: "placeholder task"
+
