@@ -1,0 +1,6 @@
+# venv directories and files
+bin/
+lib/
+lib64
+
+pip-selfcheck.json
