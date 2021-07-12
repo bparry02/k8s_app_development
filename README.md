@@ -4,13 +4,19 @@ Documentation for the collection.
 
 ## Testing
 
+1. Prepare virtual environment
+
 ```
-# create virtual environment and install dependencies
 python3 -m venv .
 source bin/activate
 pip3 install --upgrade pip setuptools pip-tools
 
 pip install -r requirements.txt
+```
+2. Run molecule
+
+```
+molecule test
 ```
 
 ## Development
