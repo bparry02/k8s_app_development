@@ -4,7 +4,16 @@
 - name: Verify
   hosts: all
   gather_facts: false
+
   tasks:
-  - name: Example assertion
-    assert:
-      that: true
+    - name: Get Secret
+      kubernetes.core.k8s_info:
+        api_version: v1
+        kind: Secret
+        name: mysecret
+        namespace: mytest
+      register: mysecret_content
+
+    - name: print secret
+      debug:
+        var: mysecret_content
