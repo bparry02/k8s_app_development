@@ -21,7 +21,7 @@ molecule test
 
 ## Development
 
-. Updating python dependencies:
+1. Updating python dependencies:
 
 ```
 source bin/activate
