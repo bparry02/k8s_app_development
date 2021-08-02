@@ -31,8 +31,5 @@ jobs:
           # prepare k8s environment
           kubectl cluster-info
           kubectl create namespace mytest
-          # set python interpreter path
-          export ANSIBLE_PYTHON_INTERPRETER=$(which python)
-          echo ANSIBLE_PYTHON_INTERPRETER=$ANSIBLE_PYTHON_INTERPRETER
           # test
-          molecule test
+          make test

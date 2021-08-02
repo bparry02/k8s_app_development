@@ -8,10 +8,10 @@ driver:
     managed: false
     ansible_connection_options:
       ansible_connection: local
-      # set interpreter path to env variable set in GitHub workflow
+      # set python interpreter path to venv or GitHub tools
+      # so modules installed via pip are located properly
+      # The ANSIBLE_PYTHON_INTERPRETER env variable is set in the Makefile
       ansible_python_interpreter: ${ANSIBLE_PYTHON_INTERPRETER}
-      # for local development in a venv
-      #ansible_python_interpreter: ${MOLECULE_PROJECT_DIRECTORY}/bin/python
 platforms:
   - name: localhost
 provisioner:
