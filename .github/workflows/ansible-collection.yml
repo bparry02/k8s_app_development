@@ -7,6 +7,7 @@ jobs:
 
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         #python-version: [3.6, 3.7, 3.8, 3.9]
         python-version: [3.8]
@@ -19,6 +20,8 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
+          echo PATH=$PATH
+          echo "Python path: $(which python)"
           python -m pip install --upgrade pip setuptools
           pip install -r requirements.in
           pip list
@@ -29,4 +32,4 @@ jobs:
           kubectl cluster-info
           kubectl create namespace mytest
           # test
-          molecule test
+          make test

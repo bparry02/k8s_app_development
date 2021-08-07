@@ -13,15 +13,15 @@ pip3 install --upgrade pip setuptools pip-tools
 
 pip install -r requirements.txt
 ```
-2. Run molecule
+2. Run molecule via make to set correct python interpreter
 
 ```
-molecule test
+make test
 ```
 
 ## Development
 
-. Updating python dependencies:
+1. Updating python dependencies:
 
 ```
 source bin/activate

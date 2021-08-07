@@ -8,6 +8,10 @@ driver:
     managed: false
     ansible_connection_options:
       ansible_connection: local
+      # set python interpreter path to venv or GitHub tools
+      # so modules installed via pip are located properly
+      # The ANSIBLE_PYTHON_INTERPRETER env variable is set in the Makefile
+      ansible_python_interpreter: ${ANSIBLE_PYTHON_INTERPRETER}
 platforms:
   - name: localhost
 provisioner:
