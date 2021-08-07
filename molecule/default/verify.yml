@@ -20,5 +20,5 @@
 
     - name: verify one secret found
       assert:
-        that: mysecret_content.resources | length > 0
-        fail_msg: "expected one secret but was {{ mysecret_content.resources }}"
+        that: mysecret_content.resources | length == 1
+        fail_msg: "expected one secret but was {{ mysecret_content.resources | length }}"
