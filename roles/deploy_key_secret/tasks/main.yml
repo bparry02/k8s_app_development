@@ -1,5 +1,13 @@
 ---
-- name: placeholder task
-  debug:
-    msg: "placeholder task"
-
+- name: create a sample secret
+  k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: Secret
+      metadata:
+        name: mysecret
+        namespace: mytest
+      type: Opaque
+      stringData:
+        mykey: mydata
