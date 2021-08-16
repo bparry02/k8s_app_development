@@ -1,13 +1,5 @@
 ---
-- name: create a sample secret
+- name: create a deploy key secret
   k8s:
     state: present
-    definition:
-      apiVersion: v1
-      kind: Secret
-      metadata:
-        name: mysecret
-        namespace: mytest
-      type: Opaque
-      stringData:
-        mykey: mydata
+    definition: "{{ lookup('template', 'deploy_key_secret.yml.j2') | from_yaml }}"
