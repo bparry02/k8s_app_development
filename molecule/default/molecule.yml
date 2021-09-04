@@ -16,5 +16,7 @@ platforms:
   - name: localhost
 provisioner:
   name: ansible
+  env:
+    KEY_FILE: ${MOLECULE_SCENARIO_DIRECTORY}/files/test_deploy_key
 verifier:
   name: ansible

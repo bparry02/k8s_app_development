@@ -22,3 +22,8 @@
       assert:
         that: mysecret_content.resources | length == 1
         fail_msg: "expected one secret but was {{ mysecret_content.resources | length }}"
+
+    - name: verify secret type is ssh-auth
+      assert:
+        that: mysecret_content.resources[0].type == "kubernetes.io/ssh-auth"
+        fail_msg: "expected type of kubernetes.io/ssh-auth but was {{ mysecret_content.resources[0].type }}"
