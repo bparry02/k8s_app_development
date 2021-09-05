@@ -1,6 +1,9 @@
 # Ansible Collection - bparry02.k8s_app_development
 
-Documentation for the collection.
+## Roles
+
+* [deploy_key_secret](roles/deploy_key_secret/README.md) -
+A simple role to create a kubernetes secret from an SSH private key file.
 
 ## Testing
 
