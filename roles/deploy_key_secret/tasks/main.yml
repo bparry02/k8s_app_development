@@ -1,4 +1,9 @@
 ---
+- name: read deploy key file
+  set_fact:
+    key_content: "{{ lookup('file', deploy_key_filename) }}"
+  no_log: True
+
 - name: create a deploy key secret
   k8s:
     state: present

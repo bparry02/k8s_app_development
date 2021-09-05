@@ -6,14 +6,8 @@
     - bparry02.k8s_app_development
 
   tasks:
-    - name: get deploy key filename
-      set_fact:
-        key_file: "{{ lookup('env', 'KEY_FILE') }}"
-
-    - name: read deploy key file
-      set_fact:
-        key_content: "{{ lookup('file', key_file) }}"
-
     - name: "Include deploy_key_secret"
       include_role:
         name: deploy_key_secret
+      vars:
+        deploy_key_filename: "{{ lookup('env', 'KEY_FILE') }}"
