@@ -1,38 +1,31 @@
-Role Name
+k8s_app_development.deploy_key_secret
 =========
 
-A brief description of the role goes here.
+A simple role to create a kubernetes secret from an SSH private key file.
+Used to easily and repeatedly configure a namespace with a secret that
+can allow SSH authentication, e.g. to a git server (GitHub, GitLab).
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+A valid kubernetes context and authenticated session is required by this role.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
-
-Dependencies
-------------
-
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+* deploy_key_filename - the local filename of the private SSH key file.
+Fully-qualified path or relative to the ansible playbook directory.
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
+Example playbook showing just the role invocation
+(logging in to kubernetes happens before this playbook).
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
-
-License
--------
-
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a website (HTML is not allowed).
+    - hosts: localhost
+      tasks:
+        - name: "Add deploy key to current k8s namespace"
+          include_role:
+            name: deploy_key_secret
+          vars:
+            deploy_key_filename: /home/myuser/.ssh/my-deploy-key
