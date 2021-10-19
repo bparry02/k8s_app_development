@@ -5,13 +5,16 @@
   hosts: all
   gather_facts: false
 
+  vars_files:
+    - vars/molecule.yml
+
   tasks:
     - name: Get Secret
       kubernetes.core.k8s_info:
         api_version: v1
         kind: Secret
         name: mysecret
-        namespace: mytest
+        namespace: "{{ molecule_namespace }}"
       register: mysecret_content
 
     - name: print secret

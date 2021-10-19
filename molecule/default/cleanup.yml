@@ -4,6 +4,10 @@
   connection: local
   gather_facts: false
   no_log: "{{ molecule_no_log }}"
+
+  vars_files:
+    - vars/molecule.yml
+
   tasks:
 
     - name: Remove secret if it exists
@@ -12,4 +16,4 @@
         api_version: v1
         kind: Secret
         name: mysecret
-        namespace: mytest
+        namespace: "{{ molecule_namespace }}"
