@@ -5,25 +5,28 @@
   hosts: all
   gather_facts: false
 
+  vars_files:
+    - vars/molecule.yml
+
   tasks:
     - name: Get Secret
       kubernetes.core.k8s_info:
         api_version: v1
         kind: Secret
-        name: mysecret
-        namespace: mytest
-      register: mysecret_content
+        name: "{{ molecule_secret_name }}"
+        namespace: "{{ molecule_namespace }}"
+      register: dk_secret_content
 
     - name: print secret
       debug:
-        var: mysecret_content
+        var: dk_secret_content
 
     - name: verify one secret found
       assert:
-        that: mysecret_content.resources | length == 1
-        fail_msg: "expected one secret but was {{ mysecret_content.resources | length }}"
+        that: dk_secret_content.resources | length == 1
+        fail_msg: "expected one secret but was {{ dk_secret_content.resources | length }}"
 
     - name: verify secret type is ssh-auth
       assert:
-        that: mysecret_content.resources[0].type == "kubernetes.io/ssh-auth"
-        fail_msg: "expected type of kubernetes.io/ssh-auth but was {{ mysecret_content.resources[0].type }}"
+        that: dk_secret_content.resources[0].type == "kubernetes.io/ssh-auth"
+        fail_msg: "expected type of kubernetes.io/ssh-auth but was {{ dk_secret_content.resources[0].type }}"

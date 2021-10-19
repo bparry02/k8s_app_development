@@ -30,6 +30,6 @@ jobs:
         run: |
           # prepare k8s environment
           kubectl cluster-info
-          kubectl create namespace mytest
+          kubectl create namespace test-kad-dks
           # test
           make test

@@ -2,6 +2,9 @@
 - name: Converge
   hosts: all
 
+  vars_files:
+    - vars/molecule.yml
+
   collections:
     - bparry02.k8s_app_development
 
@@ -11,3 +14,4 @@
         name: deploy_key_secret
       vars:
         deploy_key_filename: "{{ lookup('env', 'KEY_FILE') }}"
+        deploy_key_secret_namespace: "{{ molecule_namespace }}"
