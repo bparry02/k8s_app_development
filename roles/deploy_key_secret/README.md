@@ -16,7 +16,7 @@ Role Variables
 * deploy_key_filename - the local filename of the private SSH key file.
 Fully-qualified path or relative to the ansible playbook directory.
 * deploy_key_secret_namespace - namespace for the secret object.
-* deploy_key_secret_name - name for the secret object.
+* deploy_key_secret_name - name for the secret object. "deploy-key" by default.
 
 Example Playbook
 ----------------
@@ -28,6 +28,7 @@ Example playbook showing just the role invocation
       tasks:
         - name: "Add deploy key to current k8s namespace"
           include_role:
-            name: deploy_key_secret
+            name: bparry02.k8s_app_development.deploy_key_secret
           vars:
             deploy_key_filename: /home/myuser/.ssh/my-deploy-key
+            deploy_key_secret_namespace: my-namespace
