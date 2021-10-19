@@ -1,2 +1,5 @@
 ---
 molecule_namespace: test-kad-dks
+
+# 'deploy-key' is the default secret name defined in the role defaults
+molecule_secret_name: deploy-key
