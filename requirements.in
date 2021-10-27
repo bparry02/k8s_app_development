@@ -1,5 +1,5 @@
 ansible
-molecule
+molecule >3.4, <3.5
 
 # dependencies of kubernetes.core collection
 openshift >= 0.6
