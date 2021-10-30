@@ -26,7 +26,7 @@ Example playbook showing just the role invocation
 
     - hosts: localhost
       tasks:
-        - name: "Add deploy key to current k8s namespace"
+        - name: "Add deploy key to specified k8s namespace"
           include_role:
             name: bparry02.k8s_app_development.deploy_key_secret
           vars:

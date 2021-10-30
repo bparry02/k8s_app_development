@@ -4,3 +4,6 @@ lib/
 lib64
 
 pip-selfcheck.json
+
+# collection tarball
+*.tar.gz
