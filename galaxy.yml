@@ -55,3 +55,6 @@ homepage: http://example.com
 
 # The URL to the collection issue tracker
 issues: http://example.com/issue/tracker
+
+build_ignore:
+- '.venv'

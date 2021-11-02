@@ -10,8 +10,8 @@ A simple role to create a kubernetes secret from an SSH private key file.
 1. Prepare virtual environment
 
 ```
-python3 -m venv .
-source bin/activate
+python3 -m venv ./.venv
+source .venv/bin/activate
 pip3 install --upgrade pip setuptools pip-tools
 
 pip install -r requirements.txt
@@ -27,7 +27,7 @@ make test
 1. Updating python dependencies:
 
 ```
-source bin/activate
+source .venv/bin/activate
 pip3 install --upgrade pip setuptools pip-tools
 pip-compile --upgrade --generate-hashes --output-file requirements.txt requirements.in
 pip3 install --upgrade -r requirements.txt
